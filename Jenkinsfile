@@ -1,8 +1,8 @@
 pipeline{
     agent any
     tools{
-        jdk 'Java*'
-        maven 'Maven*'
+        jdk 'java-17-amazon-corretto.x86_64'
+        maven 'Maven3'
     }
     stages{
         stage("Cleanup Workspace"){
