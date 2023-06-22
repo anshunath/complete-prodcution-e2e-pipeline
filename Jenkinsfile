@@ -25,7 +25,7 @@ pipeline{
             }
 
         }
-         stage("Build Application"){
+        stage("Build Application"){
             steps {
                 sh "mvn clean package"
             }
@@ -38,17 +38,5 @@ pipeline{
             }
 
         }
-        
-        stage("Sonarqube Analysis") {
-            steps {
-                script {
-                    withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') {
-                        sh "mvn sonar:sonar"
-                    }
-                }
-            }
-
-        }
-
     }
 }
