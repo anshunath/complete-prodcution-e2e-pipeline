@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        jdk 'java-17-amazon-corretto.x86_64'
+        jdk 'JAVA_HOME'
         maven 'Maven3'
     }
     stages{
