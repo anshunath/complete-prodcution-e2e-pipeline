@@ -31,11 +31,11 @@ pipeline{
             }
 
         }
-        stage("Sonarqube Analysis") {
+        /*stage("Sonarqube Analysis") {
             steps {
                 script {
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
-                        sh "mvn sonar:sonar"
+                        //sh "mvn sonar:sonar"
                     }
                 }
             }
@@ -44,10 +44,31 @@ pipeline{
         stage("Quality Gate") {
             steps {
                 script {
-                    //waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
                 }
             }
 
+        }*/
+        stage('Static code analysis: Sonarqube'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonar-api'
+                   statiCodeAnalysis(SonarQubecredentialsId)
+               }
+            }
         }
+        stage('Quality Gate Status Check : Sonarqube'){
+         when { expression {  params.action == 'create' } }
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonar-api'
+                   QualityGateStatus(SonarQubecredentialsId)
+               }
+            }
+        }
+
     }
 }
