@@ -10,7 +10,7 @@ pipeline{
             script{
                 gitCheckout(
                     branch: "main"
-                    url: 'https://github.com/anshunath/complete-prodcution-e2e-pipeline.git'
+                    url: "https://github.com/anshunath/complete-prodcution-e2e-pipeline.git"
                 )
             }
             }
