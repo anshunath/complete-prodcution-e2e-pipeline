@@ -16,7 +16,7 @@ pipeline{
             }
             }
         }
-        stage('Git Checkout'){
+        stage('Git Test'){
                     
             steps{
             script{
