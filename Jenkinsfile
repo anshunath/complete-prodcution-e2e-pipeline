@@ -1,3 +1,4 @@
+@Library('Jenkins-shared-library') _
 pipeline{
 
     agent any
@@ -10,7 +11,18 @@ pipeline{
                     
             steps{
             script{
-                git branch: 'main', url: 'https://github.com/anshunath/complete-prodcution-e2e-pipeline.git'
+                gitCheckout(
+                    branch: "main"
+                    url: 'https://github.com/anshunath/complete-prodcution-e2e-pipeline.git'
+                )
+            }
+            }
+        }
+        stage('unit Teast maven'){
+                    
+            steps{
+            script{
+                mvnTest()
             }
             }
         }
