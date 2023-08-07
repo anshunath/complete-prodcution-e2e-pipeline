@@ -7,7 +7,7 @@ pipeline {
                 Script{
                     gitCheckuot(
                         branch: "main"
-                        url: "https://github.com/anshunath/jenkins_shared_lib.git"
+                        url: "https://github.com/anshunath/complete-prodcution-e2e-pipeline.git"
                     )
                 }
                 
